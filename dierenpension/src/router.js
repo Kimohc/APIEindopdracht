@@ -6,8 +6,8 @@ import Vue from 'vue';
 import Home from '/views/Home.vue';
 import Dieren from '/views/Dieren.vue';
 import Services from "/views/Services.vue";
-import Overons from "/views/Overons.vue";
 import Inlog from "../views/Inlog.vue";
+import Profile from "../views/Profile.vue";
 
 // Use Vue Router
 Vue.use(VueRouter);
@@ -21,12 +21,13 @@ const routes = [
         props: route => ({
             order: parseInt(route.query.order) || 0,
             limit: parseInt(route.query.limit) || 0,
-            offset: parseInt(route.query.offset) || 0
+            offset: parseInt(route.query.offset) || 0,
+            overige: (route.query.overige) || null,
         })
     },
     {path: '/services', component: Services},
-    {path: '/overons', component: Overons},
     {path: '/inloggen', component: Inlog},
+    {path: '/profile', component: Profile},
 ];
 
 // Create router instance

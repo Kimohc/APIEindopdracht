@@ -13,7 +13,7 @@
   <div class="card">
     <h2>Overige</h2>
     <img src="/undraw_fish_bowl_uu88.svg" alt="fdsf">
-   <button><router-link to="/dieren?order=5">Zie overige dieren </router-link></button>
+   <button><router-link to="/dieren?overige=3,4,5,6,7"> Zie overige dieren </router-link></button>
   </div>
 </main>
 </template>

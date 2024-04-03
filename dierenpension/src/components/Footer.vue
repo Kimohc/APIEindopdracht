@@ -3,18 +3,18 @@
 
     <ul>
       Services
-      <li><a href="#">Reserveer</a></li>
+      <li> <router-link to="/dieren"> Adpoteer</router-link></li>
       <li><a href="#">Steun een asiel</a></li>
-      <li><a href="#">Inloggen</a></li>
-      <li><a href="#">Registreren</a></li>
+      <li> <router-link to="/inloggen"> Inloggen</router-link></li>
+      <li> <router-link to="/inloggen"> Registreren</router-link></li>
       <li><a href="#">Meld je aan voor onze nieuwsbrief</a></li>
     </ul>
 
     <ul>
       Dieren
-      <li><a href="#">Honden</a></li>
-      <li><a href="#">Katten</a></li>
-      <li><a href="#">Overige</a></li>
+     <li> <router-link to="/dieren?order=2">Honden </router-link>   </li>
+      <li><router-link to="/dieren?order=1">Katten </router-link></li>
+      <li><router-link to="/dieren?order=3,4,5,6,7">Overige </router-link></li>
     </ul>
 
 

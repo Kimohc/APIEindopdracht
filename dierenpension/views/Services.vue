@@ -9,7 +9,7 @@
       <p>Het faciliteren van adopties voor dieren die klaar zijn om een
         nieuw thuis te vinden. Dit omvat het matchen van dieren met geschikte adoptanten,
         het uitvoeren van screeningsprocedures en het verstrekken van nazorgondersteuning.</p>
-    <button>Adpoteer een dier!</button>
+    <button> <router-link to="/dieren"> Adpoteer een dier!</router-link></button>
     </div>
     <div class="service-card">
       <h2>Knippen</h2>
@@ -18,7 +18,7 @@
         Het bieden van een veilige en comfortabele omgeving voor dieren die dakloos zijn of
         uit ongeschikte situaties komen. Dit omvat voedsel, water, onderdak en medische zorg
       </p>
-      <button>Laat je dier knippen!</button>
+      <button><a href="https://trimsalonhelmond.nl/">Laat je dier knippen!</a></button>
     </div>
     <div class="service-card">
       <h2>Medische zorg</h2>
@@ -27,7 +27,7 @@
         Dierenopvangen kunnen dieren voorzien van basisgezondheidszorg, zoals vaccinaties, ontworming
         , castratie en sterilisatie, en behandeling van ziekten en verwondingen
       </p>
-      <button>Laat je dier medische checken</button>
+      <button><a href="https://mcvoordieren.nl/">Laat je dier medische checken</a></button>
     </div>
 
     </div>
@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
 
     }
 
@@ -58,8 +57,6 @@ export default {
 
   },
   created() {
-    this.onChanged()
-    this.GetDieren()
   }
 }
 </script>

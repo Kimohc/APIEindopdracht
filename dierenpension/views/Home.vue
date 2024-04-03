@@ -21,18 +21,21 @@ export default {
   data() {
     return {
       title: "Hello World",
-      msg: 'Welcome to Your Vue.js App',
+      LoggedIn: false,
+      Account: {},
     }
 
 },
+  mounted() {
+    this.LoggedIn = this.$store.getters.getLoggedIn
+    this.Account = this.$store.getters.getAccount
+  },
   methods: {
     // eslint-disable-next-line vue/no-dupe-keys
-    onChanged(){
-      this.msg = 'hello world'
-    }
+
   },
   created(){
-    this.onChanged()
+    console.log(this.$store.getters.getLoggedIn)
   }
 
 }
