@@ -47,6 +47,7 @@ export default {
     this.Accounts = this.$store.getters.getAccount
     this.getAccountReserveringen()
     this.getAlleDieren()
+
   },
   methods: {
     async getAccountReserveringen() {
@@ -69,13 +70,17 @@ export default {
       return dier ? dier.Naam : 'Dier not found';
     },
     annuleerReservering(reserveringId) {
-      const response = axios.delete(`http://localhost:8081/api/reservering/${reserveringId}`)
-
-      console.log(response)
+      axios.delete(`http://localhost:8081/api/reservering/${reserveringId}`).then(() => {
+        this.getAccountReserveringen(); // Fetch reservations after deletion
+      }).catch(error => {
+        console.error('Error deleting reservation:', error);
+      });
     }
+
   },
   created() {
     console.log(this.$store.getters.getLoggedIn)
+
   }
 }
 </script>

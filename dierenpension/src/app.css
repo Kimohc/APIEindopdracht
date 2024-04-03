@@ -270,6 +270,12 @@ text-align: center;
     grid-row: 2/5;
 
 }
+.close{
+    border: none;
+}
+.reserve{
+    padding: 7px 10px;
+}
 .login-card2{
     display: flex;
     flex-direction: column;
