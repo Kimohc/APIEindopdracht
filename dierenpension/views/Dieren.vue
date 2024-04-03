@@ -82,6 +82,8 @@ export default {
       LoggedIn: false,
       Account: {},
       Reserveringen: [],
+      isEmpty: false,
+
     }
 
   },
@@ -89,6 +91,8 @@ export default {
   methods: {
     // eslint-disable-next-line vue/no-dupe-keys
     async GetDieren(){
+
+
       try {
         const response = await axios.get('http://localhost:8081/api/dieren', {
           params: {
@@ -99,14 +103,16 @@ export default {
           }
         });
         this.dieren = response.data;
-        console.log(this.overige)
-        console.log(this.order)
 
       } catch (error) {
         console.error('Error fetching dieren:', error);
       }
     },
     showModals(d){
+      if(!this.isEmpty){
+        this.getReservaties();
+        console.log(this.Reserveringen)
+      }
       console.log(this.LoggedIn)
       if(!this.LoggedIn){
         alert("Je moet ingelogd zijn om een reservering te maken")
@@ -117,6 +123,7 @@ export default {
     },
 
     async MaakReservatie(dier, account){
+
       for (let reservering of this.Reserveringen) {
         if (reservering.Dier_Id === dier.Dier_Id) {
           alert('Dit dier is al geserveerd')
@@ -136,22 +143,29 @@ export default {
 
     },
     async getReservaties(){
-
         const response = await axios.get('http://localhost:8081/api/reserveringen')
         this.Reserveringen = response.data
         console.log(this.Reserveringen)
 
-    },
+      },
+      async checkReservaties()
+      {
+        const response = await axios.get('http://localhost:8081/api/reserveringen/isEmpty')
+        this.isEmpty = response.data.isEmpty
+        console.log(this.isEmpty)
+
+      }
   },
   created(){
     this.GetDieren()
-    this.getReservaties()
+    this.checkReservaties()
 
   },
 
   mounted() {
     this.LoggedIn = this.$store.getters.getLoggedIn
     this.Account = this.$store.getters.getAccount
+
   },
 
 }

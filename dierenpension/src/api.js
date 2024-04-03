@@ -56,6 +56,37 @@ app.get('/api/reserveringen', (req, res) => {
     })
 })
 
+app.get('/api/reserveringen/isEmpty', (req, res) => {
+    const query = `SELECT COUNT(*) AS count FROM reserveringen`;
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error("Error checking if reserveringen is empty:", err);
+            return res.status(500).send("Error checking if reserveringen is empty");
+        }
+        const count = result[0].count;
+        if (count === 0) {
+            res.status(200).send({ isEmpty: true });
+        } else {
+            res.status(200).send({ isEmpty: false });
+        }
+    });
+});
+app.get('/api/reservering/:id/isEmpty', (req, res) => {
+    const query = `SELECT COUNT(*) AS count FROM reserveringen WHERE Gebruiker_Id = ${req.params.id}`;
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error("Error checking if reserveringen is empty:", err);
+            return res.status(500).send("Error checking if reserveringen is empty");
+        }
+        const count = result[0].count;
+        if (count === 0) {
+            res.status(200).send({ isEmpty: true });
+        } else {
+            res.status(200).send({ isEmpty: false });
+        }
+    });
+});
+
 app.get('/api/dieren/:id', (req, res) => {
     const query = `SELECT * FROM dieren WHERE Dier_Id = ${req.params.id}`
     console.log('query = ',query)

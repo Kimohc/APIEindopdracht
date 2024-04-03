@@ -40,6 +40,7 @@ export default {
       Accounts: [],
       Reserveringen: [],
       Dieren: [],
+      isEmpty:  false,
     }
   },
   mounted() {
@@ -51,14 +52,16 @@ export default {
   },
   methods: {
     async getAccountReserveringen() {
+      for(let account of this.Accounts) {
+        const check = await axios.get(`http://localhost:8081/api/reservering/${account.Gebruiker_Id}/isEmpty`)
+        this.isEmpty = check.data.isEmpty
+      }
+      if(this.isEmpty) this.Reserveringen = []; return;
 
       for (let account of this.Accounts) {
         const response = await axios.get(`http://localhost:8081/api/gebruiker/${account.Gebruiker_Id}/dieren`)
         this.Reserveringen = response.data
-        if (this.Reserveringen.length === 0) {
-          alert('Geen reserveringen gevonden')
-          return
-        }
+
       }
     },
     async getAlleDieren() {
@@ -76,8 +79,7 @@ export default {
         console.error('Error deleting reservation:', error);
       });
     }
-
-  },
+    },
   created() {
     console.log(this.$store.getters.getLoggedIn)
 
