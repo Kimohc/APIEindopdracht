@@ -56,7 +56,10 @@ export default {
         const check = await axios.get(`http://localhost:8081/api/reservering/${account.Gebruiker_Id}/isEmpty`)
         this.isEmpty = check.data.isEmpty
       }
-      if(this.isEmpty) this.Reserveringen = []; return;
+      if(this.isEmpty){
+        this.Reserveringen = []
+        return
+      }
 
       for (let account of this.Accounts) {
         const response = await axios.get(`http://localhost:8081/api/gebruiker/${account.Gebruiker_Id}/dieren`)

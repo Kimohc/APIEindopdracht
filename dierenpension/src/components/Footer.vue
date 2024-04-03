@@ -14,7 +14,7 @@
       Dieren
      <li> <router-link to="/dieren?order=2">Honden </router-link>   </li>
       <li><router-link to="/dieren?order=1">Katten </router-link></li>
-      <li><router-link to="/dieren?order=3,4,5,6,7">Overige </router-link></li>
+      <li><router-link to="/dieren?overige=3,4,5,6,7">Overige </router-link></li>
     </ul>
 
 
