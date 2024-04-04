@@ -11,7 +11,7 @@
       </div>
       <ul class="navigation-menu">
         <li> <router-link :to="{path: '/'}">Home</router-link></li>
-       <li> <router-link to="/dieren">Dieren</router-link></li>
+       <li> <router-link to="/dieren?limit=3&offset=0">Dieren</router-link></li>
         <li><router-link to="/services">Services</router-link></li>
       </ul>
       <div id="utility" v-if="LoggedIn">

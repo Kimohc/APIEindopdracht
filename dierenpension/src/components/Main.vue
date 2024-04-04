@@ -3,17 +3,17 @@
   <div class="card">
     <h2>Honden</h2>
     <img src="/undraw_dog_c7i6.svg" alt="">
-    <button><router-link to="/dieren?order=2">Zie honden </router-link></button>
+    <button><router-link to="/dieren?order=2&limit=3&offset=0">Zie honden </router-link></button>
   </div>
   <div class="card">
     <h2>Katten</h2>
     <img src="/undraw_cat_epte.svg" alt="">
-    <button><router-link to="/dieren?order=1"> Zie katten</router-link></button>
+    <button><router-link to="/dieren?order=1&limit=3&offset=0"> Zie katten</router-link></button>
   </div>
   <div class="card">
     <h2>Overige</h2>
     <img src="/undraw_fish_bowl_uu88.svg" alt="fdsf">
-   <button><router-link to="/dieren?overige=3,4,5,6,7"> Zie overige dieren </router-link></button>
+   <button><router-link to="/dieren?overige=3,4,5,6,7&limit=3&offset=0"> Zie overige dieren </router-link></button>
   </div>
 </main>
 </template>

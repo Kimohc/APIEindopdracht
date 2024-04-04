@@ -1,6 +1,6 @@
 <template>
 <div id="app" class="modal-vue">
-  <my-header></my-header>
+  <my-header ></my-header>
   <main class="dier-main">
 
     <h1>Beschikbare dieren:</h1>
@@ -28,9 +28,21 @@
     <h5>Leeftijd : {{dier.Leeftijd}}</h5>
     <h5>Commentaar:</h5>
     <p>{{dier.Commentaar}}</p>
+    <div v-if="dier.Foto">
+    <img :src="dier.Foto">
+    </div>
+    <div v-else>
+      <h2>Geen afbeelding beschikbaar</h2>
+    </div>
     <button @click="showModals(dier)">Maak een reserveringen om kennis te maken met {{dier.Naam}}</button>
   </div>
 
+      <div class="arrows" v-if="alleDieren.length > 3">
+        <svg @click="goBack"  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.64872 7.72528L0.398926 11.9608L4.63443 16.2105L6.05103 14.7987L4.23673 12.9783L16.1027 13.019L19.3585 16.2747L23.6011 12.0321L19.3585 7.78945L16.1289 11.019L4.21801 10.9782L6.06055 9.14188L4.64872 7.72528ZM17.9443 12.0321L19.3585 10.6179L20.7727 12.0321L19.3585 13.4463L17.9443 12.0321Z" fill="currentColor" /></svg>
+        <svg @click="goNext" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.9865 11.9929L18.7511 16.2426L17.3345 14.8308L19.1488 13.0104L7.0314 13.0519L7.04038 15.0507L1.04044 15.0777L1.01349 9.07773L7.01343 9.05079L7.02242 11.0519L19.1674 11.0103L17.3249 9.17398L18.7367 7.75739L22.9865 11.9929ZM3.02245 11.0687L3.03143 13.0687L5.03141 13.0597L5.02243 11.0597L3.02245 11.0687Z" fill="currentColor" /></svg>
+      </div>
+      <div v-else>
+      </div>
     </div>
 
 
@@ -83,22 +95,37 @@ export default {
       Account: {},
       Reserveringen: [],
       isEmpty: false,
-
+      Offset: 0,
+      alleDieren: [],
     }
 
   },
 
   methods: {
     // eslint-disable-next-line vue/no-dupe-keys
-    async GetDieren(){
+    async GetAlleDieren(){
+      try {
+        const response = await axios.get('http://localhost:8081/api/dieren', {
+          params:{
+            order: this.order || null,
+            overige: this.overige || null
+          }
+        })
 
+        this.alleDieren = response.data
+        console.log(this.alleDieren.length)
+      } catch (error) {
+        console.error('Error fetching dieren:', error);
+      }
+    },
+    async GetDieren(){
 
       try {
         const response = await axios.get('http://localhost:8081/api/dieren', {
           params: {
             order: this.order || null,
             limit: this.limit || null,
-            offset: this.offset || null,
+            offset: this.Offset || null,
             overige: this.overige || null
           }
         });
@@ -108,6 +135,25 @@ export default {
         console.error('Error fetching dieren:', error);
       }
     },
+    goNext(){
+      if(this.Offset > this.alleDieren.length - 4){
+        alert("Geen dieren meer beschikbaar")
+        return
+      }
+      this.Offset += 3
+      this.GetDieren()
+      console.log(this.Offset)
+      console.log(this.alleDieren.length)
+    },
+    goBack(){
+      if(this.Offset < 1){
+        alert("Geen dieren meer beschikbaar")
+        return
+      }
+      this.Offset -= 3
+      this.GetDieren()
+    },
+
     showModals(d){
       if(!this.isEmpty){
         this.getReservaties();
@@ -146,7 +192,6 @@ export default {
         const response = await axios.get('http://localhost:8081/api/reserveringen')
         this.Reserveringen = response.data
         console.log(this.Reserveringen)
-
       },
       async checkReservaties()
       {
@@ -159,7 +204,7 @@ export default {
   created(){
     this.GetDieren()
     this.checkReservaties()
-
+    this.GetAlleDieren()
   },
 
   mounted() {
