@@ -19,8 +19,6 @@
     <div class="dier-section">
 
   <div v-for="dier in dieren" :key="dier.Dier_Id" class="dierCard">
-
-
     <h3>{{dier.Naam}}</h3>
     <h5>Ras: {{dier.Ras}}</h5>
     <h5 v-if="dier.Geslacht == 1">Geslacht: Man</h5>

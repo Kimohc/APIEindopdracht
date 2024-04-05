@@ -10,12 +10,16 @@
         <h5>Rol: {{ accounts.Rol }}</h5>
         <h2>Reserveringen</h2>
         <div v-for="reservering in Reserveringen" :key="reservering.Reservering_Id">
-          <div class="reservering-card">
+          <div class="reservering-card" >
             <h5>{{ reservering.Reservering_Id }}</h5>
             <h5>{{ getDierNaam(reservering.Dier_Id) }}</h5>
             <button @click="annuleerReservering(reservering.Reservering_Id)">Annuleer reservering</button>
           </div>
         </div>
+
+      </div>
+      <div v-if="isEmpty">
+        <h2>Geen reserveringen geplaatst</h2>
       </div>
     </main>
     <my-footer></my-footer>
