@@ -3,7 +3,7 @@
 
     <ul>
       Services
-      <li> <router-link to="/dieren"> Adpoteer</router-link></li>
+      <li> <router-link to="/dieren?limit=3&offset=0"> Adpoteer</router-link></li>
       <li><a href="#">Steun een asiel</a></li>
       <li> <router-link to="/inloggen"> Inloggen</router-link></li>
       <li> <router-link to="/inloggen"> Registreren</router-link></li>

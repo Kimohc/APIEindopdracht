@@ -1,0 +1,32 @@
+[2024-04-09T13:43:02.850] [TRACE] alles - Get werknemer 
+[2024-04-09T13:43:02.855] [WARN] alles - werknemer toegevoegd 
+[2024-04-09T13:44:25.825] [TRACE] alles - Get werknemer 
+[2024-04-09T13:44:25.827] [WARN] alles - werknemer toegevoegd 
+[2024-04-09T20:11:07.466] [TRACE] alles - Get dier
+[2024-04-09T20:11:07.473] [WARN] alles - Dier toegevoegd
+[2024-04-09T20:17:24.563] [TRACE] alles - Get dier
+[2024-04-09T20:17:24.571] [WARN] alles - Dier toegevoegd
+[2024-04-09T20:25:57.543] [TRACE] alles - Get dier
+[2024-04-09T20:25:57.552] [WARN] alles - Dier toegevoegd
+[2024-04-10T10:48:28.062] [TRACE] alles - GET request response: [
+  {
+    Dier_Id: 7,
+    Naam: 'Jakub',
+    Soort_Id: 1,
+    Ras: 'gfafdsa',
+    Geslacht: 1,
+    Leeftijd: 321,
+    Aandoeningen: null,
+    Commentaar: 'fdsafdas',
+    Gereserveerd: 0,
+    Foto: 'https://cdn.pixabay.com/photo/2021/02/03/22/54/cat-5979635_960_720.jpg'
+  }
+]
+[2024-04-10T10:48:28.067] [INFO] alles - POST request successful. Status code: 201
+[2024-04-10T10:51:11.921] [TRACE] alles - Test 1 passed
+[2024-04-10T10:52:31.737] [TRACE] alles - Test 1 passed
+[2024-04-10T10:52:31.741] [TRACE] alles - statuscode =  201
+[2024-04-10T10:52:31.746] [TRACE] alles - status code for deletion =  204
+[2024-04-10T10:53:36.950] [TRACE] alles - Test 1 passed
+[2024-04-10T10:53:36.954] [TRACE] alles - statuscode =  201
+[2024-04-10T10:53:36.959] [TRACE] alles - status code for deletion =  204

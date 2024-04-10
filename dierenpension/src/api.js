@@ -174,6 +174,10 @@ app.delete('/api/reservering/:id', (req, res) => {
 
 
 
+
+
+
+
 app.all('*', (req, res) => {      // fallback routes
     return res.status(405).end()
 })
