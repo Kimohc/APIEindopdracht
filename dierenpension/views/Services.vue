@@ -9,7 +9,7 @@
       <p>Het faciliteren van adopties voor dieren die klaar zijn om een
         nieuw thuis te vinden. Dit omvat het matchen van dieren met geschikte adoptanten,
         het uitvoeren van screeningsprocedures en het verstrekken van nazorgondersteuning.</p>
-    <router-link to="/dieren"> Adpoteer een dier!</router-link>
+    <router-link to="/dieren?limit=3&offset=0"> Adpoteer een dier!</router-link>
     </div>
     <div class="service-card">
       <h2>Knippen</h2>
